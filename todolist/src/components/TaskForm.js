@@ -1,19 +1,17 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useState, useEffect, useRef } from "react";
+import { Button, Row, Col, Container, Stack, FormGroup, InputGroup, FormControl, Modal } from "react-bootstrap";
+import { Calendar2, InputCursor, InputCursorText } from "react-bootstrap-icons";
 import Form from "react-bootstrap/Form";
 
+
 function TaskForm(props) {
+  const date = new Date();
+  const [addNewModal, setAddNewModal] = useState(false);
   const [input, setInput] = useState(props.edit ? props.edit.value : "");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(`${date.getFullYear()} - ${date.getMonth()+1} - ${date.getDate()}`);
   const [taskType, setTaskType] = useState("");
-
-  const inputRef = useRef(null);
+  
   const dateRef = useRef(null);
-  const typeRef =useRef(null);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  });
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -25,9 +23,10 @@ function TaskForm(props) {
    };
   
    const handleTypeChange = (e) => {
-       console.log(e.target.name);
-       setTaskType(e.target.name);
+       console.log(e.target.value);
+       setTaskType(e.target.value);
     }; 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -38,125 +37,131 @@ function TaskForm(props) {
       type: taskType,
     });
     setInput("");
-    setDueDate("");
-    setTaskType(null);
+    setDueDate(
+      `${date.getFullYear()} - ${date.getMonth()+1} - ${date.getDate()}`
+    );
+    setTaskType("");//why's this not responding?
+    setAddNewModal(false);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="todo-form">
-      {props.edit ? (
-        <>
-          <input
-            placeholder="Update your item"
-            value={input}
-            onChange={handleInputChange}
-            name="text"
-            ref={inputRef}
-            className="todo-input edit"
-          />
-          <Form.Control
-            type="date"
-            value={dueDate}
-            name="dueDate"
-            ref={dateRef}
-            onChange={handleDateChange}
-            className="todo-date edit"
-          />
-          <div key={`inline-radio`} className="mb-3">
-            <Form value={taskType} onChange={handleTypeChange} ref={typeRef}>
-              <Form.Check
-                inline
-                label="School"
-                value={taskType}
-                name="School"
-                type="radio"
-                id="inline-radio-School"
-                className="todo-type School"
-              />
-              <Form.Check
-                inline
-                label="Work"
-                value={taskType}
-                name="Work"
-                type="radio"
-                id="inline-radio-Work"
-                className="todo-type Work"
-                //onChange={handleTypeChange}
-              />
-              <Form.Check
-                inline
-                value={taskType}
-                label="Home"
-                name="Work"
-                type="radio"
-                id="inline-radio-Home"
-                className="todo-type Home"
-                //onChange={handleTypeChange}
-              />
-            </Form>
-          </div>
-          <button onClick={handleSubmit} className="todo-button edit">
-            Update
-          </button>
-        </>
-      ) : (
-        <>
-          <input
-            placeholder="Add a todo"
-            value={input}
-            onChange={handleInputChange}
-            name="text"
-            className="todo-input"
-            ref={inputRef}
-          />
-          <Form.Control
-            type="date"
-            name="dueDate"
-            ref={dateRef}
-            value={dueDate}
-            onChange={handleDateChange}
-            className="todo-date"
-          />
-          <div key={`inline-radio`} className="mb-3">
-            <Form value={taskType} onChange={handleTypeChange} ref={typeRef}>
-              <Form.Check
-                inline
-                label="School"
-                //value={taskType}
-                name="School"
-                type="radio"
-                id="inline-radio-School"
-                className="todo-type School"
-                onChange={handleTypeChange}
-              />
-              <Form.Check
-                inline
-                label="Work"
-                //value={taskType}
-                name="Work"
-                type="radio"
-                id="inline-radio-Work"
-                className="todo-type Work"
-                onChange={handleTypeChange}
-              />
-              <Form.Check
-                inline
-                //value={taskType}
-                label="Home"
-                name="Home"
-                type="radio"
-                id="inline-radio-Home"
-                className="todo-type Home"
-                onChange={handleTypeChange}
-              />
-            </Form>
-          </div>
-          <button onClick={handleSubmit} className="todo-button">
-            Add todo
-          </button>
-        </>
-      )}
-    </form>
+    <>
+      <Container>
+        <Button
+          className="add"
+          variant="primary"
+          onClick={() => setAddNewModal(true)}
+        >
+          Add new
+        </Button>
+      </Container>
+      <Form onSubmit={handleSubmit} className="todo-form">
+        {addNewModal ? (
+          <Modal show={addNewModal} onHide={() => setAddNewModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Add Task
+              </Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body className="show-grid">
+              <Container gap="2">
+                <Row className="justify-content-center">
+                  <Col sm={8}>
+                    {/* <div className="todo-input edit"> */}
+                    <Form.Control
+                      type="text"
+                      placeholder="Add new item"
+                      value={input}
+                      onChange={handleInputChange}
+                      name="text"
+                      //ref={inputRef}
+                    />
+                  </Col>
+                </Row>
+
+                <Row className="justify-content-center">
+                  <Col sm={5}>
+                    <InputGroup className="mb-3" onChange={handleDateChange}>
+                      <InputGroup.Text id="basic-addon1">
+                        <Calendar2 />
+                      </InputGroup.Text>
+                      <Form.Control
+                        size="sm"
+                        type="date"
+                        value={dueDate}
+                        name="dueDate"
+                        ref={dateRef}
+                      />
+                    </InputGroup>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col lg={12} className="justify-content-center">
+                    <div key={`inline-radio`} className="to-do type">
+                      <InputGroup className="mb-3">
+                        <InputGroup.Text>task type</InputGroup.Text>
+                        <FormGroup
+                          name="type"
+                          value={taskType}
+                          onChange={handleTypeChange}
+                          className="todo-task-radio-text"
+                        >
+                          <Form.Check
+                            inline
+                            label="School"
+                            value="School"
+                            name="type"
+                            type="radio"
+                            //checked={taskType === "School"}
+                            id="inline-radio-School"
+                            className="todo-type School"
+                          />
+                          <Form.Check
+                            inline
+                            label="Work"
+                            value="Work"
+                            name="type"
+                            type="radio"
+                            //checked={taskType === "Work"}
+                            id="inline-radio-Work"
+                            className="todo-type Work"
+                            //onChange={handleTypeChange}
+                          />
+                          <Form.Check
+                            inline
+                            value="Home"
+                            label="Home"
+                            name="type"
+                            type="radio"
+                            //checked={taskType === "Home"}
+                            id="inline-radio-Home"
+                            className="todo-type Home"
+                            //onChange={handleTypeChange}
+                          />
+                        </FormGroup>
+                      </InputGroup>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                onClick={() => {
+                  setAddNewModal(false);
+                }}
+                variant="outline-primary"
+              >
+                Close
+              </Button>
+              <Button onClick={handleSubmit}>Add</Button>
+            </Modal.Footer>
+          </Modal>
+        ) : null}
+      </Form>
+    </>
   );
 }
 

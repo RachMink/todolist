@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import TaskForm from "./TaskForm";
 import Task from "./Task";
 import Alert from "react-bootstrap/Alert";
+import { Container, Col, Row, Button } from "react-bootstrap";
+import { Question, QuestionCircle } from "react-bootstrap-icons";
 
 function TaskList() {
   const [todos, setTodos] = useState([]);
@@ -14,7 +16,7 @@ function TaskList() {
     }
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
-    console.log(...todos);
+   
   };
 
   const updateTodo = (todoId, newValue) => {
@@ -29,7 +31,6 @@ function TaskList() {
 
   const removeTodo = (id) => {
     const removedArr = [...todos].filter((todo) => todo.id !== id);
-
     setTodos(removedArr);
   };
 
@@ -45,26 +46,36 @@ function TaskList() {
 
   return (
     <>
-      <h1>What's the Plan for Today?</h1>
+      <h1>
+        Getting things done.
+        <QuestionCircle color="white" />
+      </h1>
 
       <TaskForm onSubmit={addTodo} />
       {!show ? (
-        <Task
-          todos={todos}
-          completeTodo={completeTodo}
-          removeTodo={removeTodo}
-          updateTodo={updateTodo}
-        />
+        <div className="task-list">
+          <Task
+            todos={todos}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+            updateTodo={updateTodo}
+          />
+        </div>
       ) : (
-        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-          <p>
-            Oops, you tried adding an empty task
-          </p>
-        </Alert>
+     
+          <Alert
+            className="alert"
+            variant="danger"
+            onClose={() => setShow(false)}
+            dismissible
+          >
+            <p>Oops, you tried adding an empty task</p>
+          </Alert>
+       
       )}
     </>
   );
-//}
+
 }
 
 export default TaskList;
