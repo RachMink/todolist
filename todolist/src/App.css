@@ -1,13 +1,21 @@
 .App {
   text-align: center;
 }
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Cabin+Sketch:wght@700&family=Caveat&family=Coming+Soon&family=Crafty+Girls&family=Fredericka+the+Great&family=Gochi+Hand&family=Monoton&family=Moo+Lah+Lah&family=Patrick+Hand&family=Permanent+Marker&family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-size: large;
+  font-family: 'Coming Soon', cursive;
 } 
+body{
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
 
 .todo-app {
   display: flex;
@@ -15,40 +23,48 @@
   justify-content: start;
   width: 90%;
   min-height: 600px;
-  background: #161a2b;
+  min-height: 90vh; 
+  background: #fffefe5d;
   text-align: center;
-  margin: 60px auto;
+  margin: 35px auto;
   border-radius: 10px;
   padding-bottom: 32px;
+ 
+
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 h1 {
+  font-size: large;
+  font-size: 50px;
   margin: 32px 0;
-  color: #fff;
-  font-size: 24px;
+  color: #ffffff;
+  font-family: 'Fredericka the Great', cursive;
+  
 }
 
 .todo-task-radio-text{
-  /* color:#fff; */
-  margin-left: 3px;
+  margin-left: 4px;
 }
 
-/* .complete {
+.complete {
   text-decoration: line-through;
   opacity: 0.4;
-} */
+}
 
 .todo-form {
   margin-bottom: 32px;
-}
-
-.todo-input {
-  padding: 14px 32px 14px 16px;
-  border-radius: 4px 0 0 4px;
-  border: 2px solid #5d0cff;
-  outline: none;
-  width: 320px;
-  background: transparent;
 }
 
 .todo-input::placeholder {
@@ -71,43 +87,56 @@ h1 {
 }
 
 .add{
-  background-color: aqua;
   width: 20%;
 }
 
 .todo-type{
   border-radius:5px;
 	padding:0.5rem;
-  justify-content: space-between; 
-  display: flex;
-  /* margin-left:3px; */
+ 
+  /* justify-content: center; 
+  display: flex; */
 }
+
 .todo{ 
 	border-radius: 10px;
 	padding: 1rem;
-	min-height: 170px;
+	min-height: 150px;
 	display: flex;
 	flex-direction: column;
+  text-align: left;
 	justify-content: space-between;
-	white-space: pre-wrap;
-  /* color: #fff; */
-  background-color: rgb(174, 176, 177);
+	white-space: pre-wrap; 
+  background-color: rgb(253, 254, 255);
 }
 
 .Work{
-  border-bottom: 20px solid rgb(84, 158, 228);
-  
+  border-bottom: 20px solid #ee7752;
+
 } 
 .School{
- /* border-bottom: 3px solid var(--cyan); */
-  /* border-width: 3em; */
-  border-bottom: 20px solid rgb(252, 80, 243);
-
+  border-bottom: 20px solid #e73c7e;
 }
-.Home{
-  border-bottom: 20px solid rgb(100, 247, 124);
 
-}   
+.Home{
+  border-bottom: 20px solid #23a6d5;
+}
+.Other{
+  border-bottom: 20px solid #23d5ab;
+}
+
+.work{
+  background-color:#ee7752;
+} 
+.school{
+  background-color: #e73c7e;
+}
+.home{
+  background-color: #23a6d5;
+} 
+.other{
+  background-color: #23d5ab;
+}
 
 .todo-footer{
   display: flex;
@@ -116,11 +145,33 @@ h1 {
 }
 
 
+
 .task-list {
+  margin: 1.5%;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
+.box{
+ height: 50px;
+ margin: 5px;
+ border-radius: 5px;
+ text-align: center;
+}
 
+.task-input{
+  margin: 10px;
+}
 
+.header{
+  display: inline;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.icon{
+  /* display: inline; */
+  /* font: 140px; */
+  margin-inline-end: auto;
+  margin-top: 25%;
+}

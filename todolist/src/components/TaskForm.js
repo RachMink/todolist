@@ -49,7 +49,7 @@ function TaskForm(props) {
       <Container>
         <Button
           className="add"
-          variant="primary"
+          variant="outline-light"
           onClick={() => setAddNewModal(true)}
         >
           Add new
@@ -65,8 +65,8 @@ function TaskForm(props) {
             </Modal.Header>
 
             <Modal.Body className="show-grid">
-              <Container gap="2">
-                <Row className="justify-content-center">
+              <Container fluid>
+                <Row className="justify-content-center task-input">
                   <Col sm={8}>
                     {/* <div className="todo-input edit"> */}
                     <Form.Control
@@ -75,14 +75,15 @@ function TaskForm(props) {
                       value={input}
                       onChange={handleInputChange}
                       name="text"
+                      className="text-input"
                       //ref={inputRef}
                     />
                   </Col>
                 </Row>
 
-                <Row className="justify-content-center">
+                <Row className="justify-content-center task-input">
                   <Col sm={5}>
-                    <InputGroup className="mb-3" onChange={handleDateChange}>
+                    <InputGroup onChange={handleDateChange}>
                       <InputGroup.Text id="basic-addon1">
                         <Calendar2 />
                       </InputGroup.Text>
@@ -97,11 +98,11 @@ function TaskForm(props) {
                   </Col>
                 </Row>
 
-                <Row>
-                  <Col lg={12} className="justify-content-center">
-                    <div key={`inline-radio`} className="to-do type">
-                      <InputGroup className="mb-3">
-                        <InputGroup.Text>task type</InputGroup.Text>
+                <Row className="justify-content-center task-input">
+                  <Col lg={12}>
+                    <div key={`inline-radio`} className="todo-type">
+                      <InputGroup>
+                        {/* <InputGroup.Text>type</InputGroup.Text> */}
                         <FormGroup
                           name="type"
                           value={taskType}
@@ -114,9 +115,8 @@ function TaskForm(props) {
                             value="School"
                             name="type"
                             type="radio"
-                            //checked={taskType === "School"}
                             id="inline-radio-School"
-                            className="todo-type School"
+                            className="todo-type school"
                           />
                           <Form.Check
                             inline
@@ -124,9 +124,8 @@ function TaskForm(props) {
                             value="Work"
                             name="type"
                             type="radio"
-                            //checked={taskType === "Work"}
                             id="inline-radio-Work"
-                            className="todo-type Work"
+                            className="todo-type work"
                             //onChange={handleTypeChange}
                           />
                           <Form.Check
@@ -135,10 +134,18 @@ function TaskForm(props) {
                             label="Home"
                             name="type"
                             type="radio"
-                            //checked={taskType === "Home"}
                             id="inline-radio-Home"
-                            className="todo-type Home"
+                            className="todo-type home"
                             //onChange={handleTypeChange}
+                          />
+                          <Form.Check
+                            inline
+                            label="Other"
+                            value="Other"
+                            name="type"
+                            type="radio"
+                            id="inline-radio-Other"
+                            className="todo-type other"
                           />
                         </FormGroup>
                       </InputGroup>
@@ -152,11 +159,13 @@ function TaskForm(props) {
                 onClick={() => {
                   setAddNewModal(false);
                 }}
-                variant="outline-primary"
+                variant="outline-dark"
               >
                 Close
               </Button>
-              <Button onClick={handleSubmit}>Add</Button>
+              <Button variant="outline-dark" onClick={handleSubmit}>
+                Add
+              </Button>
             </Modal.Footer>
           </Modal>
         ) : null}
