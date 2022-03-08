@@ -7,9 +7,10 @@ import Form from "react-bootstrap/Form";
 function TaskForm(props) {
   const date = new Date();
   const [addNewModal, setAddNewModal] = useState(false);
-  const [input, setInput] = useState(props.edit ? props.edit.value : "");
+  const [input, setInput] = useState("");
   const [dueDate, setDueDate] = useState(`${date.getFullYear()} - ${date.getMonth()+1} - ${date.getDate()}`);
   const [taskType, setTaskType] = useState("");
+  
   
   const dateRef = useRef(null);
 
@@ -20,12 +21,11 @@ function TaskForm(props) {
 
   const handleDateChange = (e) => {
     setDueDate(e.target.value);
-   };
+  };
   
-   const handleTypeChange = (e) => {
-       console.log(e.target.value);
-       setTaskType(e.target.value);
-    }; 
+  const handleTypeChange = (e) => {
+    setTaskType(e.target.value);
+  }; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,12 +35,13 @@ function TaskForm(props) {
       text: input,
       date: dueDate,
       type: taskType,
+      checked: false,
     });
     setInput("");
     setDueDate(
       `${date.getFullYear()} - ${date.getMonth()+1} - ${date.getDate()}`
     );
-    setTaskType("");//why's this not responding?
+    setTaskType("");
     setAddNewModal(false);
   };
 
@@ -76,14 +77,14 @@ function TaskForm(props) {
                       onChange={handleInputChange}
                       name="text"
                       className="text-input"
-                      //ref={inputRef}
+                      
                     />
                   </Col>
                 </Row>
 
                 <Row className="justify-content-center task-input">
                   <Col sm={5}>
-                    <InputGroup onChange={handleDateChange}>
+                    <InputGroup>
                       <InputGroup.Text id="basic-addon1">
                         <Calendar2 />
                       </InputGroup.Text>
@@ -93,6 +94,7 @@ function TaskForm(props) {
                         value={dueDate}
                         name="dueDate"
                         ref={dateRef}
+                        onChange={handleDateChange}
                       />
                     </InputGroup>
                   </Col>
@@ -120,22 +122,22 @@ function TaskForm(props) {
                           />
                           <Form.Check
                             inline
-                            label="Work"
-                            value="Work"
-                            name="type"
-                            type="radio"
-                            id="inline-radio-Work"
-                            className="todo-type work"
-                            //onChange={handleTypeChange}
-                          />
-                          <Form.Check
-                            inline
                             value="Home"
                             label="Home"
                             name="type"
                             type="radio"
                             id="inline-radio-Home"
                             className="todo-type home"
+                            //onChange={handleTypeChange}
+                          />
+                          <Form.Check
+                            inline
+                            label="Work"
+                            value="Work"
+                            name="type"
+                            type="radio"
+                            id="inline-radio-Work"
+                            className="todo-type work"
                             //onChange={handleTypeChange}
                           />
                           <Form.Check

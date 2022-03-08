@@ -1,9 +1,9 @@
 .App {
   text-align: center;
 }
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Cabin+Sketch:wght@700&family=Caveat&family=Coming+Soon&family=Crafty+Girls&family=Fredericka+the+Great&family=Gochi+Hand&family=Monoton&family=Moo+Lah+Lah&family=Patrick+Hand&family=Permanent+Marker&family=Poiret+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,9 +11,11 @@
   font-size: large;
   font-family: 'Coming Soon', cursive;
 } 
+
 body{
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
+  background: linear-gradient(-45deg, #ee7d5a, #7e015e, #00668b, #05d1a1);
+	/* background: linear-gradient(-45deg, #8b0297, #e77b3c, #05a4b9, #000266); */
+  background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 }
 
@@ -29,8 +31,6 @@ body{
   margin: 35px auto;
   border-radius: 10px;
   padding-bottom: 32px;
- 
-
 }
 
 @keyframes gradient {
@@ -51,7 +51,6 @@ h1 {
   margin: 32px 0;
   color: #ffffff;
   font-family: 'Fredericka the Great', cursive;
-  
 }
 
 .todo-task-radio-text{
@@ -93,9 +92,6 @@ h1 {
 .todo-type{
   border-radius:5px;
 	padding:0.5rem;
- 
-  /* justify-content: center; 
-  display: flex; */
 }
 
 .todo{ 
@@ -115,27 +111,31 @@ h1 {
 
 } 
 .School{
-  border-bottom: 20px solid #e73c7e;
+  border-bottom: 20px solid #92017f;
 }
 
 .Home{
-  border-bottom: 20px solid #23a6d5;
+  border-bottom: 20px solid #026d94;
 }
 .Other{
-  border-bottom: 20px solid #23d5ab;
+  border-bottom: 20px solid #1bd6ab;
 }
 
 .work{
+  color: white;
   background-color:#ee7752;
 } 
 .school{
-  background-color: #e73c7e;
+  color: white;
+  background-color: #92017f;
 }
 .home{
-  background-color: #23a6d5;
+  color: white;
+  background-color: #026d94;
 } 
 .other{
-  background-color: #23d5ab;
+  color: white;
+  background-color: #1bd6ab;
 }
 
 .todo-footer{
@@ -143,8 +143,6 @@ h1 {
 	align-items: center;
 	justify-content: space-between;
 }
-
-
 
 .task-list {
   margin: 1.5%;
@@ -170,8 +168,15 @@ h1 {
   margin-bottom: 1%;
 }
 .icon{
-  /* display: inline; */
-  /* font: 140px; */
   margin-inline-end: auto;
   margin-top: 25%;
+}
+/* .toast{
+  background-color: transparent; 
+  color: blue;
+  
+} */
+
+.check{
+  margin: 8px 8px;
 }
