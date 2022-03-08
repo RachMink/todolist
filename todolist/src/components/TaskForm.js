@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Row, Col, Container, Stack, FormGroup, InputGroup, FormControl, Modal } from "react-bootstrap";
-import { Calendar2, InputCursor, InputCursorText } from "react-bootstrap-icons";
+import React, { useState, useRef } from "react";
+import { Button, Row, Col, Container,FormGroup, InputGroup, Modal } from "react-bootstrap";
+import { Calendar2} from "react-bootstrap-icons";
 import Form from "react-bootstrap/Form";
 
 
@@ -10,13 +10,11 @@ function TaskForm(props) {
   const [input, setInput] = useState("");
   const [dueDate, setDueDate] = useState(`${date.getFullYear()} - ${date.getMonth()+1} - ${date.getDate()}`);
   const [taskType, setTaskType] = useState("");
-  
-  
+   
   const dateRef = useRef(null);
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-    
   };
 
   const handleDateChange = (e) => {
@@ -53,7 +51,7 @@ function TaskForm(props) {
           variant="outline-light"
           onClick={() => setAddNewModal(true)}
         >
-          Add new
+          Add New +
         </Button>
       </Container>
       <Form onSubmit={handleSubmit} className="todo-form">
@@ -69,7 +67,6 @@ function TaskForm(props) {
               <Container fluid>
                 <Row className="justify-content-center task-input">
                   <Col sm={8}>
-                    {/* <div className="todo-input edit"> */}
                     <Form.Control
                       type="text"
                       placeholder="Add new item"
@@ -104,7 +101,6 @@ function TaskForm(props) {
                   <Col lg={12}>
                     <div key={`inline-radio`} className="todo-type">
                       <InputGroup>
-                        {/* <InputGroup.Text>type</InputGroup.Text> */}
                         <FormGroup
                           name="type"
                           value={taskType}
@@ -128,7 +124,6 @@ function TaskForm(props) {
                             type="radio"
                             id="inline-radio-Home"
                             className="todo-type home"
-                            //onChange={handleTypeChange}
                           />
                           <Form.Check
                             inline
@@ -138,7 +133,6 @@ function TaskForm(props) {
                             type="radio"
                             id="inline-radio-Work"
                             className="todo-type work"
-                            //onChange={handleTypeChange}
                           />
                           <Form.Check
                             inline

@@ -1,32 +1,10 @@
 import React, { useState } from "react";
-import TaskForm from "./TaskForm";
-import { Trash, Pencil } from "react-bootstrap-icons";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Modal,
-  Row,
-  Form,
-  Toast,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "react-bootstrap";
+import { Trash } from "react-bootstrap-icons";
+import {Button, Modal} from "react-bootstrap";
 
-function Task({
-  handleInputChange,
-  todos,
-  completeTodo,
-  removeTodo,
-  updateTodo,
-  checkOff,
-}) {
+function Task({ todos, completeTodo, removeTodo }) {
   const [show, setShow] = useState(false);
   const [deleteId, setDeleteId] = useState("");
-  
-
-  //let sound = new Audio("/Success-sound-effect.mp3");
 
   const deleteShowModal = (id) => {
     setDeleteId(id);
@@ -37,12 +15,6 @@ function Task({
     removeTodo(id);
     setShow(false);
   };
-
-//  const start = () => {
-//    console.log("play sound");
-//    sound.play();
-//  };
-
 
   return (
     <>
@@ -67,10 +39,7 @@ function Task({
           </div>
           <div className="todo-footer">
             {todo.date}
-            <Trash
-              onClick={() => deleteShowModal(todo.id)}
-              className="delete-icon"
-            />
+            <Trash onClick={() => deleteShowModal(todo.id)} />
           </div>
         </div>
       ))}

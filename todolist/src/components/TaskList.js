@@ -5,22 +5,12 @@ import Alert from "react-bootstrap/Alert";
 import { Container, Col, Row, Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 import { QuestionCircle } from "react-bootstrap-icons";
 import Confetti from "react-confetti";
-//import useWindowSize from "react-use/lib/useWindowSize";
-
-
-
 
 function TaskList() {
   const [todos, setTodos] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [showKey, setShowKey] = useState(false);
   const [checkedToast, setCheckedToast] = useState(false);
-  //const { width, height } = useWindowSize();
-
-  // const start =()=>{
-  //   console.log("play sound");
-  //   sound.play();
-  // }
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -29,17 +19,6 @@ function TaskList() {
     }
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
-   
-  };
-
-  const updateTodo = (todoId, newValue) => {
-    if (!newValue.text || /^\s*$/.test(newValue.text)) {
-      return;
-    }
-
-    setTodos((prev) =>
-      prev.map((item) => (item.id === todoId ? newValue : item))
-    );
   };
 
   const removeTodo = (id) => {
@@ -48,7 +27,6 @@ function TaskList() {
   };
 
   const completeTodo = (id) => {
-  
     let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete;
@@ -56,21 +34,19 @@ function TaskList() {
         if(todo.isChecked){
           setCheckedToast(true);
         }
-       
       }
       return todo;
     });
-
     setTodos(updatedTodos);
   };
-
 
   const openKey=()=>{
     setShowKey(true);
   };
+
   const handleCloseKey=()=>{
     setShowKey(false);
-  }
+  };
 
   return (
     <>
@@ -127,23 +103,22 @@ function TaskList() {
               todos={todos}
               completeTodo={completeTodo}
               removeTodo={removeTodo}
-              updateTodo={updateTodo}
             />
+            <ToastContainer>
+              <Toast
+                onClose={() => setCheckedToast(false)}
+                show={checkedToast}
+                delay={3000}
+                autohide
+                className="toast"
+              >
+                <Toast.Body>
+                  <Confetti className="confetti" />
+                  Woohoo, you've completed a task! Keep it up!
+                </Toast.Body>
+              </Toast>
+            </ToastContainer>
           </div>
-
-         
-            <Toast
-              onClose={() => setCheckedToast(false)}
-              show={checkedToast}
-              delay={3000}
-              autohide
-            >
-              <Toast.Body>
-                <Confetti className="confetti" />
-                Woohoo, you've completed a task! Keep it up!
-              </Toast.Body>
-            </Toast>
-        
         </>
       ) : (
         <Alert

@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Annie+Use+Your+Telescope&family=Cabin+Sketch:wght@700&family=Caveat&family=Coming+Soon&family=Crafty+Girls&family=Fredericka+the+Great&family=Gochi+Hand&family=Monoton&family=Moo+Lah+Lah&family=Patrick+Hand&family=Permanent+Marker&family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Fredericka+the+Great&display=swap');
 
 * {
   box-sizing: border-box;
@@ -171,11 +171,6 @@ h1 {
   margin-inline-end: auto;
   margin-top: 25%;
 }
-/* .toast{
-  background-color: transparent; 
-  color: blue;
-  
-} */
 
 .check{
   margin: 8px 8px;
