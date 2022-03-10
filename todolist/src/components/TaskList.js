@@ -13,7 +13,7 @@ function TaskList() {
   const [showKey, setShowKey] = useState(false);
   const [checkedToast, setCheckedToast] = useState(false);
 
-  const [playActive] = useSound(pop);
+  const [playSound] = useSound(pop);
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -37,7 +37,7 @@ function TaskList() {
         todo.isChecked = !todo.isChecked
         if(todo.isChecked){
           setCheckedToast(true);
-          playActive();
+          playSound();
         }
       }
       return todo;
@@ -59,8 +59,7 @@ function TaskList() {
         <Row className="justify-content-center">
           <Col lg={1} />
           <Col lg={10}>
-            <h1>Let's Do It.</h1>
-            
+            <h1>Let's Do It.</h1> 
           </Col>
           <Col lg={1}>
             <QuestionCircle

@@ -46,7 +46,7 @@ function TaskForm(props) {
       <Container>
         <Button
           className="add"
-          variant="outline-light"
+          variant="light"
           onClick={() => setAddNewModal(true)}
         >
           Add New +
@@ -67,12 +67,12 @@ function TaskForm(props) {
                   <Col sm={8}>
                     <Form.Control
                       type="text"
-                      placeholder="Add new item"
+                      placeholder="type new task"
                       value={input}
                       onChange={handleInputChange}
                       name="text"
                       className="text-input"
-                      
+                      aria-label="type-text"
                     />
                   </Col>
                 </Row>
@@ -112,7 +112,8 @@ function TaskForm(props) {
                             name="type"
                             type="radio"
                             id="inline-radio-School"
-                            className="todo-type school"
+                            className="todo-type School"
+                            aria-labelledby="inline-radio-School"
                           />
                           <Form.Check
                             inline
@@ -121,7 +122,8 @@ function TaskForm(props) {
                             name="type"
                             type="radio"
                             id="inline-radio-Home"
-                            className="todo-type home"
+                            className="todo-type Home"
+                            aria-labelledby="inline-radio-Home"
                           />
                           <Form.Check
                             inline
@@ -130,7 +132,8 @@ function TaskForm(props) {
                             name="type"
                             type="radio"
                             id="inline-radio-Work"
-                            className="todo-type work"
+                            className="todo-type Work"
+                            aria-labelledby="inline-radio-Work"
                           />
                           <Form.Check
                             inline
@@ -139,7 +142,8 @@ function TaskForm(props) {
                             name="type"
                             type="radio"
                             id="inline-radio-Other"
-                            className="todo-type other"
+                            className="todo-type Other"
+                            aria-labelledby="inline-radio-Other"
                           />
                         </FormGroup>
                       </InputGroup>
