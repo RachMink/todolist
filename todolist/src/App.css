@@ -1,22 +1,79 @@
-.App {
-  text-align: center;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Fredericka+the+Great&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&family=Fredericka+the+Great&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-size: large;
-  font-family: 'Coming Soon', cursive;
-} 
+  font-family: "Coming Soon", cursive;
+}
 
-body{
+.add {
+  width: 20%;
+}
+
+.alert {
+  width: 40%;
+  margin-left: 30%;
+}
+
+.App {
+  text-align: center;
+}
+
+body {
   background: linear-gradient(-45deg, #ee7d5a, #7e015e, #00668b, #05d1a1);
-	/* background: linear-gradient(-45deg, #8b0297, #e77b3c, #05a4b9, #000266); */
+  /* background: linear-gradient(-45deg, #8b0297, #e77b3c, #05a4b9, #000266); */
   background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.box {
+  height: 50px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.check {
+  margin: 8px 8px;
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+h1 {
+  font-size: large;
+  font-size: 50px;
+  margin: 32px 0;
+  color: #ffffff;
+  font-family: "Fredericka the Great", cursive;
+  justify-content: space-between;
+}
+
+.header {
+  display: inline;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.icon {
+  margin-inline-end: auto;
+  margin-top: 25%;
 }
 
 .todo-app {
@@ -25,7 +82,7 @@ body{
   justify-content: start;
   width: 90%;
   min-height: 600px;
-  min-height: 90vh; 
+  min-height: 90vh;
   background: #fffefe5d;
   text-align: center;
   margin: 35px auto;
@@ -33,33 +90,8 @@ body{
   padding-bottom: 32px;
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-h1 {
-  font-size: large;
-  font-size: 50px;
-  margin: 32px 0;
-  color: #ffffff;
-  font-family: 'Fredericka the Great', cursive;
-}
-
-.todo-task-radio-text{
+.todo-task-radio-text {
   margin-left: 4px;
-}
-
-.complete {
-  text-decoration: line-through;
-  opacity: 0.4;
 }
 
 .todo-form {
@@ -76,72 +108,27 @@ h1 {
   position: relative;
 }
 
-h1 {
-  justify-content: space-between;
+.todo-type {
+  border-radius: 5px;
+  padding: 0.5rem;
 }
 
-.alert{
-  width: 40%;
-  margin-left: 30%;
-}
-
-.add{
-  width: 20%;
-}
-
-.todo-type{
-  border-radius:5px;
-	padding:0.5rem;
-}
-
-.todo{ 
-	border-radius: 10px;
-	padding: 1rem;
-	min-height: 150px;
-	display: flex;
-	flex-direction: column;
+.todo {
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
   text-align: left;
-	justify-content: space-between;
-	white-space: pre-wrap; 
+  justify-content: space-between;
+  white-space: pre-wrap;
   background-color: rgb(253, 254, 255);
 }
 
-.Work{
-  border-bottom: 20px solid #ee7752;
-
-} 
-.School{
-  border-bottom: 20px solid #92017f;
-}
-
-.Home{
-  border-bottom: 20px solid #026d94;
-}
-.Other{
-  border-bottom: 20px solid #1bd6ab;
-}
-
-.work{
-  color: white;
-  background-color:#ee7752;
-} 
-.school{
-  color: white;
-  background-color: #92017f;
-}
-.home{
-  color: white;
-  background-color: #026d94;
-} 
-.other{
-  color: white;
-  background-color: #1bd6ab;
-}
-
-.todo-footer{
+.todo-footer {
   display: flex;
-	align-items: center;
-	justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task-list {
@@ -151,27 +138,39 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
-.box{
- height: 50px;
- margin: 5px;
- border-radius: 5px;
- text-align: center;
-}
-
-.task-input{
+.task-input {
   margin: 10px;
 }
 
-.header{
-  display: inline;
-  margin-top: 1%;
-  margin-bottom: 1%;
+.Work {
+  border-bottom: 20px solid #ee7752;
 }
-.icon{
-  margin-inline-end: auto;
-  margin-top: 25%;
+.School {
+  border-bottom: 20px solid #92017f;
 }
 
-.check{
-  margin: 8px 8px;
+.Home {
+  border-bottom: 20px solid #026d94;
 }
+.Other {
+  border-bottom: 20px solid #1bd6ab;
+}
+
+.work {
+  color: white;
+  background-color: #ee7752;
+}
+.school {
+  color: white;
+  background-color: #92017f;
+}
+.home {
+  color: white;
+  background-color: #026d94;
+}
+.other {
+  color: white;
+  background-color: #1bd6ab;
+}
+
+

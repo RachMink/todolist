@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import TaskForm from "./TaskForm";
 import Task from "./Task";
-import Alert from "react-bootstrap/Alert";
-import { Container, Col, Row, Button, Modal, Toast, ToastContainer } from "react-bootstrap";
+import { Container, Col, Row, Button, Modal, Toast, ToastContainer, Alert } from "react-bootstrap";
 import { QuestionCircle } from "react-bootstrap-icons";
 import Confetti from "react-confetti";
+import useSound from "use-sound";
+import pop from "../pop.mp3";
 
 function TaskList() {
   const [todos, setTodos] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [showKey, setShowKey] = useState(false);
   const [checkedToast, setCheckedToast] = useState(false);
+
+  const [playActive] = useSound(pop);
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -27,12 +30,14 @@ function TaskList() {
   };
 
   const completeTodo = (id) => {
+  
     let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete;
         todo.isChecked = !todo.isChecked
         if(todo.isChecked){
           setCheckedToast(true);
+          playActive();
         }
       }
       return todo;
@@ -55,6 +60,7 @@ function TaskList() {
           <Col lg={1} />
           <Col lg={10}>
             <h1>Let's Do It.</h1>
+            
           </Col>
           <Col lg={1}>
             <QuestionCircle

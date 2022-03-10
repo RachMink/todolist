@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Trash } from "react-bootstrap-icons";
 import {Button, Modal} from "react-bootstrap";
+import useSound from "use-sound";
+//import pop from "/pop.mp3"
 
 function Task({ todos, completeTodo, removeTodo }) {
   const [show, setShow] = useState(false);
@@ -16,6 +18,8 @@ function Task({ todos, completeTodo, removeTodo }) {
     setShow(false);
   };
 
+    const [playOn] = useSound("/sounds/pop-up-on.mp3", { volume: 0.25 });
+    const [playOff] = useSound("/sounds/pop-up-off.mp3", { volume: 0.25 });
   return (
     <>
       {todos.map((todo, index) => (
@@ -31,6 +35,7 @@ function Task({ todos, completeTodo, removeTodo }) {
                   className="check"
                   checked={todo.isChecked ? true : false}
                   onClick={() => completeTodo(todo.id)}
+                 
                   readOnly
                 />
                 {todo.text}

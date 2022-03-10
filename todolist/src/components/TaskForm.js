@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Button, Row, Col, Container,FormGroup, InputGroup, Modal } from "react-bootstrap";
+import { Button, Row, Col, Container,FormGroup, InputGroup, Modal , Form } from "react-bootstrap";
 import { Calendar2} from "react-bootstrap-icons";
-import Form from "react-bootstrap/Form";
 
 
 function TaskForm(props) {
@@ -33,7 +32,6 @@ function TaskForm(props) {
       text: input,
       date: dueDate,
       type: taskType,
-      checked: false,
     });
     setInput("");
     setDueDate(
